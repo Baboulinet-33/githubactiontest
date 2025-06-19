@@ -20,7 +20,7 @@ jobs:
       SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
       AWS_ACCESS_KEY_ID: ${{ secrets.SCW_ACCESS_KEY }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.SCW_SECRET_KEY }}
-      TF_VAR_repo_github_password: ${{ secret.TF_VAR_REPO_GITHUB_PASSWORD }}
+      TF_VAR_repo_github_password: ${{ secrets.TF_VAR_REPO_GITHUB_PASSWORD }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
