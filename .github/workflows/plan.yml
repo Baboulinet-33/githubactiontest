@@ -1,4 +1,4 @@
-name: "Terraform"
+name: "Terraform Plan"
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  terraform_init:
+  terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
     environment: production
