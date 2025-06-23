@@ -31,15 +31,6 @@ jobs:
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Write secrets tfvars file
-        run: |
-          cat > secrets.auto.tfvars <<EOF 
-          git_tokens = {
-          "lb-test-bnl" = "${{ secrets.GIT_TOKEN_LB_TEST_BNL }}"
-          "lb-sdid-app-hp-public-mirai" = "${{ secrets.GIT_TOKEN_LB_SDID_APP_HP_PUBLIC_MIRAI }}"
-          }
-          EOF
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
@@ -52,6 +43,16 @@ jobs:
       # Checks that all Terraform configuration files adhere to a canonical format
       - name: Terraform Format
         run: terraform fmt -check
+
+      # Write secrets.auto.tfvars file that contains github tokens to access cidr file
+      - name: Write secrets tfvars file
+        run: |
+          cat > secrets.auto.tfvars <<EOF 
+          git_tokens = {
+          "lb-test-bnl" = "${{ secrets.GIT_TOKEN_LB_TEST_BNL }}"
+          "lb-sdid-app-hp-public-mirai" = "${{ secrets.GIT_TOKEN_LB_SDID_APP_HP_PUBLIC_MIRAI }}"
+          }
+          EOF
 
       # Generates an execution plan for Terraform
       - name: Terraform Plan
