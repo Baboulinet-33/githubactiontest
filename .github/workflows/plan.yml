@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
+  terraform_init:
     name: "Terraform"
     runs-on: ubuntu-latest
     environment: production
