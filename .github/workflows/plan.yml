@@ -31,6 +31,15 @@ jobs:
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Write secrets tfvars file
+        run: |
+          cat <<EOF > secrets.auto.tfvars
+          git_tokens = {
+          "lb-test-bnl" = "${{ secrets.GIT_TOKEN_LB_TEST_BNL }}"
+          "lb-sdid-app-hp-public-mirai" = "${{ secrets.GIT_TOKEN_LB_SDID_APP_HP_PUBLIC_MIRAI }}"
+          }
+          <<EOF
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
